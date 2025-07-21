@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 # 1. Chargement des données
 @st.cache_data
 def load_data():
-    return pd.read_csv("Transactions_data_complet")
+    return pd.read_csv("Transactions_data_complet.CSV")
 
 df = load_data()
 st.write("Aperçu des données chargées:", df.head())  # Afficher les premières lignes
