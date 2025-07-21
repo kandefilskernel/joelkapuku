@@ -7,13 +7,13 @@ import plotly.express as px
 # Configuration de la page
 st.set_page_config(layout="wide")
 
-
+# 1. Chargement des données
 @st.cache_data
 def load_data():
     return pd.read_csv("Transactions_data.csv")
 
 df = load_data()
-st.write("Aperçu des données chargées:", df.head()) 
+st.write("Aperçu des données chargées:", df.head())  # Afficher les premières lignes
 
 # 2. Titre du tableau de bord
 st.title("Dashboard Interactif - Analyse des Transactions")
@@ -21,9 +21,9 @@ st.title("Dashboard Interactif - Analyse des Transactions")
 # 3. Sidebar - Filtres dynamiques
 st.sidebar.header("Filtres")
 
-
+# Conversion de TransactionStartTime si présente
 if 'TransactionStartTime' in df.columns:
-    df['TransactionStartTime'] = pd.to_datetime(df['TransactionStartTime'], errors='coerce') 
+    df['TransactionStartTime'] = pd.to_datetime(df['TransactionStartTime'], errors='coerce')  # Convertir en datetime, remplacer les erreurs par NaT
     st.write("Aperçu des dates:", df['TransactionStartTime'].describe())  # Vérifier les dates
 
     # Supprimer les lignes avec des dates invalides
